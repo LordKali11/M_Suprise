@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Valentine 💖</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: pink;
-            font-family: Arial;
-            text-align: center;
-        }
-        button {
-            padding: 15px 25px;
-            font-size: 18px;
-            border: none;
-            background: red;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-    </style>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1>Will you be my Valentine? 💘</h1>
-        <button onclick="alert('Yay! ❤️')">Yes 💖</button>
+
+    <div class="container">
+        <h1 class="title">Will you be my Valentine? 💘</h1>
+
+        <div class="buttons">
+            <button id="yesBtn">Yes 💖</button>
+            <button id="noBtn">No 🙈</button>
+        </div>
+
+        <p class="hint">Choose wisely 😏</p>
     </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
 </body>
 </html>
