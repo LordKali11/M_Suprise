@@ -31,6 +31,16 @@ body {
     font-size: 26px;
     color: #ff4d6d;
     margin-bottom: 25px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Buttons */
@@ -53,16 +63,37 @@ button {
 #yesBtn {
     background: #ff4d6d;
     color: white;
+    animation: pulse 2s ease-in-out infinite;
 }
 
 #yesBtn:hover {
     transform: scale(1.1);
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255, 77, 109, 0);
+    }
 }
 
 #noBtn {
     background: #ddd;
     color: #555;
     position: relative;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 /* Hint text */
@@ -70,6 +101,18 @@ button {
     margin-top: 20px;
     font-size: 14px;
     color: #999;
+    animation: fadeInUp 1.5s ease;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Animations */
