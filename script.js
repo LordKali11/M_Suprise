@@ -3,51 +3,59 @@ const proposal = document.getElementById("proposal");
 const videoIntro = document.getElementById("videoIntro");
 
 video.onended = () => {
-    videoIntro.style.display = "none";
-    proposal.style.display = "block";
+    // Fade out the video intro
+    videoIntro.style.transition = "opacity 0.5s ease";
+    videoIntro.style.opacity = 0;
+
+    // Wait 0.5 seconds before hiding the video and showing the proposal
+    setTimeout(() => {
+        videoIntro.style.display = "none";
+        proposal.style.display = "block";
+
+        // Fade in the proposal
+        proposal.style.opacity = 0;
+        proposal.style.transition = "opacity 0.5s ease";
+        setTimeout(() => {
+            proposal.style.opacity = 1;
+        }, 50); // tiny delay to trigger transition
+    }, 500);
 };
-
-noBtn.addEventListener("click", () => {
-    document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#ccc,#999);
-            font-family:'Pacifico', cursive;
-            text-align:center;
-            padding:20px;
-            animation: fadeIn 0.5s ease;
-        ">
-            <h1 style="
-                color:white;
-                font-size:32px;
-                animation: scaleUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            ">
-                Oh no! 💔 <br>
-                You chose No 😢
-            </h1>
-        </div>
-        <style>
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes scaleUp {
-                0% { transform: scale(0.5); opacity: 0; }
-                100% { transform: scale(1); opacity: 1; }
-            }
-        </style>
-    `;
-});
-
-
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 
 noBtn.addEventListener("mouseover", moveButton);
 noBtn.addEventListener("touchstart", moveButton);
+
+noBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        document.body.innerHTML = `
+            <div style="
+                height:100vh;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                background:linear-gradient(135deg,#fceaaa,#f8b500);
+                font-family:'Pacifico', cursive;
+                text-align:center;
+                padding:20px;
+                animation: fadeIn 0.5s ease;
+            ">
+                <h1 style="
+                    color:#555;
+                    font-size:32px;
+                    animation: scaleUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+                ">
+                    No worries! <br>
+                    Maybe next time 💛
+                </h1>
+            </div>
+        `;
+    }, 500);
+});
+
+
+
+
 
 function moveButton() {
     const x = Math.random() * 200 - 100;
@@ -74,8 +82,8 @@ yesBtn.addEventListener("click", () => {
                 font-size:32px;
                 animation: scaleUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             ">
-                Yay!! 💖💖💖 <br>
-                I knew you'd say yes 😍
+                Yay!<br>
+                I’d be so happy to be your Valentine! 😄
             </h1>
         </div>
         <style>
