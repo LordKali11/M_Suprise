@@ -1,3 +1,13 @@
+const video = document.getElementById("introVideo");
+const proposal = document.getElementById("proposal");
+const videoIntro = document.getElementById("videoIntro");
+
+video.onended = () => {
+    videoIntro.style.display = "none";
+    proposal.style.display = "block";
+};
+
+
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 
