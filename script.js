@@ -2,6 +2,46 @@ const video = document.getElementById("introVideo");
 const proposal = document.getElementById("proposal");
 const videoIntro = document.getElementById("videoIntro");
 
+function showPlayOverlay() {
+    if (document.getElementById('playOverlay')) return;
+    const overlay = document.createElement('div');
+    overlay.id = 'playOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,0.6);z-index:20;cursor:pointer';
+    overlay.innerHTML = `
+        <div style="text-align:center;color:white;font-family:Pacifico, cursive">
+            <button id="playBtn" style="font-size:20px;padding:18px 28px;border-radius:12px;border:none;background:#ff4d6d;color:white;cursor:pointer">▶️ Play</button>
+            <p style="margin-top:10px">Tap or click to start the video</p>
+        </div>
+    `;
+    overlay.addEventListener('click', () => {
+        video.play().then(() => overlay.remove()).catch(() => {});
+    });
+    document.body.appendChild(overlay);
+}
+
+// Try to autoplay; if blocked, show a play overlay so user can start the video without muting
+video.addEventListener('canplay', () => {
+    const p = video.play();
+    if (p !== undefined) {
+        p.then(() => {
+            // autoplay succeeded
+        }).catch(() => {
+            showPlayOverlay();
+        });
+    }
+});
+
+// Also try to start on any first user interaction (useful for mobile)
+['click', 'touchstart'].forEach(evt => {
+    document.addEventListener(evt, function oncePlay() {
+        const p = video.play();
+        if (p && typeof p.then === 'function') p.then(() => {
+            const ov = document.getElementById('playOverlay'); if (ov) ov.remove();
+        }).catch(() => {});
+        document.removeEventListener(evt, oncePlay);
+    });
+});
+
 video.onended = () => {
     // Fade out the video intro
     videoIntro.style.transition = "opacity 0.5s ease";
