@@ -7,6 +7,41 @@ video.onended = () => {
     proposal.style.display = "block";
 };
 
+noBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+        <div style="
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#ccc,#999);
+            font-family:'Pacifico', cursive;
+            text-align:center;
+            padding:20px;
+            animation: fadeIn 0.5s ease;
+        ">
+            <h1 style="
+                color:white;
+                font-size:32px;
+                animation: scaleUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            ">
+                Oh no! 💔 <br>
+                You chose No 😢
+            </h1>
+        </div>
+        <style>
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes scaleUp {
+                0% { transform: scale(0.5); opacity: 0; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+        </style>
+    `;
+});
+
 
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
