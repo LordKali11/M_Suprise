@@ -14,6 +14,23 @@ body {
     overflow: hidden;
 }
 
+/* Video intro */
+#videoIntro {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#videoIntro video {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+}
+
 /* Main card */
 .container {
     background: white;
