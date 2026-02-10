@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Valentine 💖</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
+    <!-- Video Intro -->
+    <div id="videoIntro">
+        <video id="introVideo" autoplay controls>
+            <source src="my.bird.buddy-20260210-0001.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Proposal (hidden at first) -->
+    <div class="container" id="proposal" style="display:none;">
         <h1 class="title">Will you be my Valentine? 💘</h1>
 
         <div class="buttons">
@@ -24,7 +30,6 @@
         <p class="hint">Choose wisely </p>
     </div>
 
-    <!-- JS -->
     <script src="script.js"></script>
 </body>
 </html>
